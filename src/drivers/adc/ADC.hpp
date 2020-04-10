@@ -51,6 +51,7 @@
 #include <uORB/Publication.hpp>
 #include <uORB/topics/adc_report.h>
 #include <uORB/topics/system_power.h>
+#include <uORB/topics/debug_vect.h>
 
 using namespace time_literals;
 
@@ -105,4 +106,7 @@ private:
 
 	uORB::Publication<adc_report_s>		_to_adc_report{ORB_ID(adc_report)};
 	uORB::Publication<system_power_s>	_to_system_power{ORB_ID(system_power)};
+	
+	struct debug_vect_s _debug_vect;
+	orb_advert_t pub_debug_vect = orb_advertise(ORB_ID(debug_vect), &_debug_vect);
 };

@@ -136,6 +136,12 @@ void ADC::update_adc_report(hrt_abstime now)
 	adc.v_ref = px4_arch_adc_reference_v();
 	adc.resolution = px4_arch_adc_dn_fullcount();
 
+	// Populate debug_vect
+	_debug_vect.x = adc.raw_data[7];
+	_debug_vect.y = adc.raw_data[8];
+	_debug_vect.z = adc.raw_data[9];
+	orb_publish(ORB_ID(debug_vect), pub_debug_vect, &_debug_vect);
+	
 	_to_adc_report.publish(adc);
 }
 

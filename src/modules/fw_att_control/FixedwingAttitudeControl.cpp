@@ -653,6 +653,8 @@ void FixedwingAttitudeControl::Run()
 			_actuators_0_pub.publish(_actuators);
 			_actuators_2_pub.publish(_actuators_airframe);
 		}
+		
+
 	}
 
 	perf_end(_loop_perf);
